@@ -1,65 +1,95 @@
+/* Page setup */
 body {
+  background: #fafafa;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: #f9f9f9;
-  font-family: Arial, sans-serif;
+  font-family: 'Georgia', serif;
 }
 
-.invitation-container {
-  perspective: 1000px;
+/* Envelope wrapper */
+.env-wrapper {
+  width: 320px;
+  height: 240px;
+  perspective: 1200px;
 }
 
+/* Envelope body */
 .envelope {
-  width: 300px;
+  width: 320px;
   height: 200px;
   position: relative;
   cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
 }
 
-.flap {
-  width: 100%;
-  height: 50%;
-  background: #ffcccc;
+/* Triangular flap */
+.envelope .flap {
+  width: 0;
+  height: 0;
   position: absolute;
   top: 0;
   left: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 100px solid #fff;
   transform-origin: top;
-  transition: transform 1s ease;
-  z-index: 2;
+  z-index: 3;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
 }
 
-.letter {
+/* Envelope body styling */
+.envelope .body {
   width: 100%;
   height: 100%;
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  box-sizing: border-box;
-  transform: translateY(100%);
-  transition: transform 1s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
+/* Letter inside */
+.letter {
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  width: 260px;
+  background: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  transform: translateY(120%);
+  transition: transform 0.8s ease;
+}
+
+/* Envelope open state */
 .envelope.open .flap {
   transform: rotateX(-180deg);
+  transition: transform 0.8s ease;
 }
-
 .envelope.open .letter {
   transform: translateY(0);
 }
 
-.open-site-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff6b6b;
+/* Text + button */
+.letter h1 {
+  font-size: 24px;
+  margin: 0;
+}
+.letter p {
+  font-size: 16px;
+}
+.btn {
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: #d43f4a;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-weight: bold;
 }
