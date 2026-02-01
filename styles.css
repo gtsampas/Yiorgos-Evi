@@ -2,8 +2,8 @@ body {
   font-family: Georgia, serif;
   background: #f7f4f1;
   text-align: center;
-  padding: 40px;
   margin: 0;
+  padding: 0;
 }
 
 .invite {
@@ -11,32 +11,58 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation: fadeIn 1.5s ease-in;
 }
 
 .card {
   background: white;
-  padding: 50px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 60px 50px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: floatUp 1.2s ease-out;
 }
 
 .open-btn {
   display: inline-block;
-  margin-top: 30px;
-  padding: 15px 30px;
+  margin-top: 35px;
+  padding: 16px 36px;
   background: #b79b6c;
   color: white;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 40px;
+  font-size: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.open-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .hero {
-  margin-bottom: 40px;
+  margin: 50px 0;
 }
 
 input, select, button {
   display: block;
   margin: 15px auto;
-  padding: 10px;
-  width: 250px;
+  padding: 12px;
+  width: 260px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
