@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yiorgos & Evi</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Yiorgos & Evi</h1>
+    <p>We’re getting married 💍</p>
+  </section>
+
+  <section>
+    <h2>The Day</h2>
+    <p>Date: Coming soon</p>
+    <p>Location: Coming soon</p>
+  </section>
+
+  <section>
+    <h2>RSVP</h2>
+
+    <form name="rsvp" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="rsvp">
+
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Email" required />
+
+      <select name="attendance">
+        <option value="yes">Happily attending</option>
+        <option value="no">Sadly cannot</option>
+      </select>
+
+      <button type="submit">Send RSVP</button>
+    </form>
+  </section>
+
+</body>
+</html>
