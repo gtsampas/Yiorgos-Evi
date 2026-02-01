@@ -1,23 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
-<link rel="stylesheet" href="style.css">
+<title>Προσκλητήριο Γάμου Deluxe</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f8e1f4;
+  }
+
+  .envelope-container {
+    perspective: 1200px;
+  }
+
+  .envelope {
+    width: 360px;
+    height: 220px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  .envelope.open {
+    transform: rotateX(180deg);
+  }
+
+  .flap {
+    width: 100%;
+    height: 120px;
+    background: #d81b60;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.8s;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .content {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 1s, top 1s;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    color: #d81b60;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .envelope.open .flap {
+    transform: rotateX(-180deg);
+  }
+
+  .envelope.open .content {
+    opacity: 1;
+    top: 0;
+  }
+
+  .content h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.4em;
+  }
+
+  .content p {
+    margin: 3px 0;
+  }
+
+  .rsvp-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #d81b60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .rsvp-btn:hover {
+    background: #ad1457;
+  }
+</style>
 </head>
 <body>
 
-<div class="env-wrapper">
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-    <div class="body"></div>
-    <div class="letter" id="letter">
-      <h1>You're Invited!</h1>
-      <p>We would love to celebrate our special day with you 💍</p>
-      <a href="fullsite.html" class="btn">View Full Site</a>
+<!-- Μουσική υπόκρουση -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div class="envelope-container">
+  <div class="envelope" onclick="toggleEnvelope(this)">
+    <div class="flap">Πατήστε για να ανοίξετε 💌</div>
+    <div class="content">
+      <h2>Μαρία & Γιάννης</h2>
+      <p>Ημερομηνία: 20 Ιουνίου 2026</p>
+      <p>Ώρα: 18:00</p>
+      <p>Τοποθεσία: Εκκλησία Αγίου Δημητρίου</p>
+      <button class="rsvp-btn" onclick="rsvp(event)">Κάντε RSVP</button>
     </div>
   </div>
 </div>
 
-<script src="scri
+<script>
+function toggleEnvelope(el){
+  el.classList.toggle('open');
+}
+
+function rsvp(event){
+  event.stopPropagation();
+  alert("Σύντομα θα μπορείτε να στείλετε το RSVP σας!");
+}
+</script>
+
+</body>
+</html>
