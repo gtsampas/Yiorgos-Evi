@@ -1,95 +1,97 @@
 /* Page setup */
 body {
-  background: #fafafa;
+  margin: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  background: #fdf6f0;
   font-family: 'Georgia', serif;
+  overflow: hidden;
 }
 
 /* Envelope wrapper */
 .env-wrapper {
-  width: 320px;
-  height: 240px;
+  width: 350px;
+  height: 250px;
   perspective: 1200px;
 }
 
-/* Envelope body */
+/* Envelope container */
 .envelope {
-  width: 320px;
+  width: 100%;
   height: 200px;
   position: relative;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease;
+  transition: transform 1s ease-in-out;
 }
 
 /* Triangular flap */
-.envelope .flap {
+.flap {
   width: 0;
   height: 0;
   position: absolute;
   top: 0;
   left: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  border-bottom: 100px solid #fff;
+  border-left: 175px solid transparent;
+  border-right: 175px solid transparent;
+  border-bottom: 125px solid #fff;
   transform-origin: top;
   z-index: 3;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-/* Envelope body styling */
-.envelope .body {
+/* Envelope body */
+.body {
   width: 100%;
   height: 100%;
   background: #fff;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   position: absolute;
   top: 0;
   left: 0;
+  border-radius: 4px;
 }
 
-/* Letter inside */
+/* Letter */
 .letter {
   position: absolute;
-  top: 50px;
-  left: 30px;
-  width: 260px;
-  background: white;
-  padding: 20px;
+  top: 60px;
+  left: 25px;
+  width: 300px;
+  background: #fff;
+  padding: 25px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  border-radius: 6px;
   transform: translateY(120%);
-  transition: transform 0.8s ease;
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-/* Envelope open state */
+/* Open state */
 .envelope.open .flap {
   transform: rotateX(-180deg);
-  transition: transform 0.8s ease;
 }
 .envelope.open .letter {
   transform: translateY(0);
 }
 
-/* Text + button */
+/* Text and button */
 .letter h1 {
-  font-size: 24px;
+  font-size: 26px;
   margin: 0;
+  color: #333;
 }
 .letter p {
   font-size: 16px;
+  margin-top: 12px;
+  color: #555;
 }
 .btn {
-  margin-top: 14px;
-  padding: 10px 16px;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 22px;
   background: #d43f4a;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-}
