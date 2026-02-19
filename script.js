@@ -1,26 +1,17 @@
-const button = document.getElementById('openBtn');
-const audio = document.getElementById('music');
-
-button.addEventListener('click', () => {
-  // Κρύβουμε cover
-  document.getElementById('cover').style.display = 'none';
-  
-  // Δείχνουμε one-page content
-  const page = document.getElementById('onepage');
-  page.style.display = 'block';
-  page.style.opacity = 1;
-
-  // Παίζουμε μουσική αμέσως
-  audio.play().catch(() => {
-    alert("Πατήστε ξανά για να ξεκινήσει η μουσική.");
-  });
-});
-
-
+const openBtn = document.getElementById('openBtn');
 const playBtn = document.getElementById('playMusicBtn');
 const audio = document.getElementById('music');
 
+openBtn.addEventListener('click', () => {
+  document.getElementById('cover').style.display = 'none';
+  document.getElementById('onepage').style.display = 'block';
+  // ΜΗΝ παίζεις μουσική εδώ
+});
+
 playBtn.addEventListener('click', () => {
-  audio.play();
+  audio.play().catch(err => {
+    alert("Πατήστε ξανά για να ξεκινήσει η μουσική."); 
+    console.log(err);
+  });
   playBtn.style.display = 'none';
 });
