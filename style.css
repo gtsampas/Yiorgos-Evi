@@ -1,69 +1,107 @@
 body, html {
-  margin:0; padding:0;
-  height:100%; width:100%;
-  font-family: Arial, sans-serif;
+
+margin:0;
+padding:0;
+font-family: Arial;
+overflow-x:hidden;
+
 }
 
+
+/* COVER */
+
 #cover {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: url('https://i.imgur.com/wpenomF.jpeg') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background:url('https://i.imgur.com/wpenomF.jpeg') center/cover no-repeat;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:10;
+
+transition: opacity 1.5s ease;
+
+}
+
+.cover-content {
+
+text-align:center;
+color:white;
+
 }
 
 #cover h1 {
-  color:white;
-  font-size: 48px;
-  text-shadow: 2px 2px 4px #000;
-  margin-bottom: 20px;
+
+font-size:48px;
+margin-bottom:20px;
+
 }
 
 #cover button {
-  padding: 15px 30px;
-  font-size: 24px;
-  border:none;
-  border-radius: 10px;
-  cursor:pointer;
-  background-color: rgba(255,255,255,0.8);
+
+font-size:22px;
+padding:15px 30px;
+cursor:pointer;
+
 }
+
+
+/* INVITATION */
 
 #onepage {
-  display: none;
-  padding: 50px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-
-.audio-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-
-#onepage {
-
-display:none;
-
-padding:40px;
-
-text-align:center;
 
 background:white;
 
 min-height:100vh;
 
+padding:60px 20px;
+
+opacity:0;
+
+transition:opacity 2s ease;
+
 }
 
+
+.section {
+
+margin:80px auto;
+max-width:600px;
+text-align:center;
+
+}
+
+
+
+/* FADE ANIMATION */
+
+.fade-up {
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition: all 1.5s ease;
+
+}
+
+.fade-up.show {
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+.delay {
+
+transition-delay:0.5s;
+
+}
