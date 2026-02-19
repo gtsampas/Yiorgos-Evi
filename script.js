@@ -27,3 +27,20 @@ playBtn.addEventListener('click', () => {
   playBtn.style.display = 'none';
 
 });
+
+
+const openBtn = document.getElementById('openBtn');
+const audio = document.getElementById('music');
+
+openBtn.addEventListener('click', () => {
+
+  // κρύβει cover
+  document.getElementById('cover').style.display = 'none';
+
+  // δείχνει invitation
+  document.getElementById('onepage').style.display = 'block';
+
+  // παίζει μουσική
+  audio.play();
+
+});
