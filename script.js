@@ -1,49 +1,29 @@
-const openBtn = document.getElementById("openBtn");
-const cover = document.getElementById("cover");
-const onepage = document.getElementById("onepage");
-const audio = document.getElementById("music");
+const openBtn = document.getElementById('openBtn');
+const playBtn = document.getElementById('playMusicBtn');
+const audio = document.getElementById('music');
 
+openBtn.addEventListener('click', () => {
 
-openBtn.addEventListener("click", () => {
+  // κρύβει cover
+  document.getElementById('cover').style.display = 'none';
 
-  // play music
-  audio.play();
+  // δείχνει invitation
+  document.getElementById('onepage').style.display = 'block';
 
-  // fade out cover
-  cover.style.opacity = "0";
-
-  setTimeout(() => {
-
-    cover.style.display = "none";
-
-    onepage.style.opacity = "1";
-
-    startScrollAnimations();
-
-  }, 1500);
+  // παίζει μουσική
+  audio.play().catch(err => {
+    console.log("Autoplay blocked, waiting for user interaction", err);
+  });
 
 });
 
+playBtn.addEventListener('click', () => {
 
-
-function startScrollAnimations(){
-
-  const elements = document.querySelectorAll(".fade-up");
-
-  const observer = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-
-        entry.target.classList.add("show");
-
-      }
-
-    });
-
+  audio.play().catch(err => {
+    alert("Πατήστε ξανά για να ξεκινήσει η μουσική.");
+    console.log(err);
   });
 
-  elements.forEach(el => observer.observe(el));
+  playBtn.style.display = 'none';
 
-}
+});
