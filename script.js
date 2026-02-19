@@ -17,9 +17,10 @@ button.addEventListener('click', () => {
 });
 
 
-
 const playBtn = document.getElementById('playMusicBtn');
+const audio = document.getElementById('music');
+
 playBtn.addEventListener('click', () => {
   audio.play();
-  playBtn.style.display = 'none'; // κρύβουμε το κουμπί αφού ξεκινήσει
+  playBtn.style.display = 'none';
 });
