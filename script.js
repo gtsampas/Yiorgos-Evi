@@ -15,3 +15,11 @@ button.addEventListener('click', () => {
     alert("Πατήστε ξανά για να ξεκινήσει η μουσική.");
   });
 });
+
+
+
+const playBtn = document.getElementById('playMusicBtn');
+playBtn.addEventListener('click', () => {
+  audio.play();
+  playBtn.style.display = 'none'; // κρύβουμε το κουμπί αφού ξεκινήσει
+});
