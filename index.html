@@ -3,27 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Πρόσκληση Γάμου Γιώργος & Ευη</title>
+<title>Γιώργος & Ευη</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
+
+<!-- COVER PAGE -->
 <div id="cover">
+
   <h1>Γιώργος & Ευη</h1>
-  <button id="openBtn">Ανοίξτε την Πρόσκληση ❤️</button>
+
+  <button id="openBtn">
+    Ανοίξτε την Πρόσκληση ❤️
+  </button>
+
 </div>
 
+
+
+<!-- ONE PAGE INVITATION -->
 <div id="onepage">
-  <h2>Σας περιμένουμε στον γάμο μας!</h2>
-  <p>Ημερομηνία: 26 Σεπτεμβρίου 2026</p>
-  <p>Τοποθεσία: Εκκλησία & Δεξίωση</p>
-  <button id="playMusicBtn">Παίξε μουσική 🎵</button>
-</div>
 
-<audio id="music" loop preload="auto">
-  <source src="Locomondo.mp3" type="audio/mpeg">
-</audio>
+  <section class="section">
+    <h2>Σας περιμένουμε στον γάμο μας 💍</h2>
 
-<script src="script.js"></script>
-</body>
-</html>
+    <p><strong>26 Σεπτεμβρίου 2026</strong></p>
+
+    <p>Ιερός Ναός Αγίου Δημητρίου</p>
+
+    <p>Ώρα 18:00</p>
+  </section>
+
+
+  <section class="section">
+
+    <h3>Τοποθεσία</h3>
+
+    <a href="https://maps.google.com" target="_blank">
+      Δείτε στο Google Maps
+    </a>
+
+  </section>
+
+
+
+  <section class="section">
+
+    <h3>RSVP</h3>
+
+    <form name="rsvp" method="POST" data-netlify="true">
+
+      <input type="hidden" name="form-name" value="rsvp">
+
+      <input type="text" name="name" placeholder="Ονοματεπώνυμο" required>
+
+      <select name="attendance" required>
+
+        <option value="">Θα παρευρεθείτε;</option>
+
+        <option value="yes">Ναι</option>
+
+        <option value="no">Όχι</option>
+
+      </select>
+
+      <button type="submit">
