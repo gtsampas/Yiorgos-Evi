@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ευχαριστούμε · Γιώργος &amp; Εύη</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="floral-corners" aria-hidden="true">
+    <span class="floral-extra floral-extra--bottom-left"></span>
+    <span class="floral-extra floral-extra--bottom-right"></span>
+    <span class="floral-extra floral-extra--mid-left"></span>
+    <span class="floral-extra floral-extra--mid-right"></span>
+  </div>
+
+  <main class="thank-you-page">
+    <div class="thank-you-card">
+      <p class="thank-you-eyebrow" id="thankYouEyebrow">Γιώργος &amp; Εύη</p>
+      <h1 class="thank-you-title" id="thankYouTitle">Ευχαριστούμε!</h1>
+      <p class="thank-you-message" id="thankYouMessage"></p>
+      <a class="btn thank-you-back" href="index.html" id="thankYouBack">Επιστροφή στην πρόσκληση</a>
+    </div>
+  </main>
+
+  <script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const rawRsvp = params.get("rsvp");
+  const rsvp = rawRsvp === "no" ? "no" : rawRsvp === "yes" ? "yes" : "unknown";
+  let lang = (params.get("lang") || "el").toLowerCase().slice(0, 2);
+  if (!["el", "en", "sq"].includes(lang)) lang = "el";
+  document.documentElement.lang = lang;
+
+  const copy = {
+    el: {
+      title: "Ευχαριστούμε!",
+      yes: "Σας ευχαριστούμε για την απάντησή σας, ανυπομονούμε να σας δούμε και να γιορτάσουμε μαζί σας την ημέρα του γάμου μας.",
+      no: "Σε ευχαριστούμε για την απάντησή σου.",
+      unknown: "Η απάντησή σας καταγράφηκε. Σας ευχαριστούμε!",
+      back: "Επιστροφή στην πρόσκληση",
+      eyebrow: "Γιώργος & Εύη"
+    },
+    en: {
+      title: "Thank you!",
+      yes: "Thank you for your reply — we can’t wait to see you and celebrate our wedding day together.",
+      no: "Thank you for your reply.",
+      unknown: "Your response has been received. Thank you!",
+      back: "Back to the invitation",
+      eyebrow: "Giorgos & Evi"
+    },
+    sq: {
+      title: "Faleminderit!",
+      yes: "Faleminderit për përgjigjen tuaj — presim me padurim t'ju shohim dhe të festojmë së bashku ditën e dasmës sonë.",
+      no: "Faleminderit për përgjigjen tuaj.",
+      unknown: "Përgjigja juaj u regjistrua. Faleminderit!",
+      back: "Kthehu te ftesa",
+      eyebrow: "Giorgos & Evi"
+    }
+  };
+
+  const t = copy[lang];
+  const body =
+    rsvp === "no" ? t.no : rsvp === "yes" ? t.yes : t.unknown;
+  document.getElementById("thankYouEyebrow").textContent = t.eyebrow;
+  document.getElementById("thankYouTitle").textContent = t.title;
+  document.getElementById("thankYouMessage").textContent = body;
+  document.getElementById("thankYouBack").textContent = t.back;
+})();
+  </script>
+</body>
+</html>

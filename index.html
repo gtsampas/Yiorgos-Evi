@@ -2,26 +2,374 @@
 <html lang="el">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Γιώργος &amp; Εύη · Giorgos &amp; Evi</title>
+<meta name="description" content="Παντρευόμαστε! Σας προσκαλούμε να το γιορτάσουμε μαζί μας στο Αγρίνιο.">
+<link rel="canonical" href="https://www.giorgosevi.com/">
 
-<title>Γιώργος & Ευη</title>
+<!-- Link preview (Open Graph) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Γιώργος &amp; Εύη">
+<meta property="og:title" content="Γιώργος &amp; Εύη · Giorgos &amp; Evi">
+<meta property="og:description" content="Παντρευόμαστε! Σας προσκαλούμε να το γιορτάσουμε μαζί μας στο Αγρίνιο.">
+<meta property="og:url" content="https://www.giorgosevi.com/">
+<meta property="og:image" content="https://www.giorgosevi.com/assets/social/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="el_GR">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Γιώργος &amp; Εύη · Giorgos &amp; Evi">
+<meta name="twitter:description" content="Παντρευόμαστε! Σας προσκαλούμε να το γιορτάσουμε μαζί μας στο Αγρίνιο.">
+<meta name="twitter:image" content="https://www.giorgosevi.com/assets/social/og-image.jpg">
 
 <link rel="stylesheet" href="style.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
 
-
-<!-- COVER -->
-<div id="cover">
-
-  <div class="cover-content">
-
-    <h1 class="fade-up">Γιώργος & Ευη</h1>
-
-    <button id="openBtn">Ανοίξτε την Πρόσκληση ❤️</button>
-
+  <div class="floral-corners" aria-hidden="true">
+    <span class="floral-extra floral-extra--bottom-left"></span>
+    <span class="floral-extra floral-extra--bottom-right"></span>
+    <span class="floral-extra floral-extra--mid-left"></span>
+    <span class="floral-extra floral-extra--mid-right"></span>
   </div>
 
-</div>
+  <div class="lang-dropdown-wrap" id="langDropdownWrap" hidden>
+    <div class="lang-dropdown" id="langDropdown">
+      <button type="button" class="lang-dropdown__btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="listbox"
+              aria-controls="langDropdownPanel" aria-label="Επιλογή γλώσσας">
+        <span class="lang-dropdown__flag" id="langDropdownFlag" aria-hidden="true">🇬🇷</span>
+        <span class="lang-dropdown__label" id="langDropdownLabel">Ελληνικά</span>
+        <span class="lang-dropdown__chev" aria-hidden="true">▾</span>
+      </button>
+      <ul class="lang-dropdown__panel" id="langDropdownPanel" role="listbox" hidden>
+        <li class="lang-dropdown__item" role="none">
+          <button type="button" class="lang-dropdown__option" role="option" data-lang="el">
+            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
+            <span class="lang-dropdown__fi" aria-hidden="true">🇬🇷</span>
+            <span>Ελληνικά</span>
+          </button>
+        </li>
+        <li class="lang-dropdown__item" role="none">
+          <button type="button" class="lang-dropdown__option" role="option" data-lang="en">
+            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
+            <span class="lang-dropdown__fi" aria-hidden="true">🇬🇧</span>
+            <span>English</span>
+          </button>
+        </li>
+        <li class="lang-dropdown__item" role="none">
+          <button type="button" class="lang-dropdown__option" role="option" data-lang="sq">
+            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
+            <span class="lang-dropdown__fi" aria-hidden="true">🇦🇱</span>
+            <span>Shqip</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
+  <!-- COVER (ENVELOPE) -->
+  <div id="cover" role="dialog" aria-modal="true" aria-label="Wedding invitation cover">
+    <div class="envelope-stage">
+      <div class="cover-poster" aria-hidden="true"></div>
+      <button class="candle-hit" id="candleOpen" type="button" aria-label="Ανοίξτε το προσκλητήριό σας · Open your invitation"></button>
+      <div class="cover-hint" aria-live="polite">
+        <div class="cover-date" aria-hidden="true">26.09.26</div>
+        <div class="cover-hint-rotator">
+          <span class="cover-hint-line cover-hint-line--el" lang="el">Ανοίξτε το προσκλητήριό σας</span>
+          <span class="cover-hint-line cover-hint-line--en" lang="en">Open your invitation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <nav id="menu" aria-label="Main navigation">
+    <a href="#hero" data-i18n="nav_home">Αρχική</a>
+    <a href="#details" data-i18n="nav_details">Λεπτομέρειες</a>
+    <a href="#countdown" data-i18n="nav_countdown">Countdown</a>
+    <a href="#location" data-i18n="nav_location">Τοποθεσία</a>
+    <a href="#hotels" data-i18n="nav_hotels">Ξενοδοχεία</a>
+    <a href="#travel" data-i18n="nav_travel">Ταξίδι</a>
+    <a href="#rsvp" data-i18n="nav_rsvp">RSVP</a>
+  </nav>
+
+  <!-- ONE PAGE -->
+  <main id="onepage">
+    <section id="hero" class="section hero">
+      <div class="hero-topline" data-i18n="hero_topline">Με χαρά σας προσκαλούμε στον γάμο μας</div>
+      <h1 class="hero-names" data-i18n="names">Γιώργος & Εύη</h1>
+      <div class="hero-date" data-i18n="hero_date_short">26.09.26</div>
+    </section>
+
+    <section id="details" class="section" aria-label="Λεπτομέρειες">
+      <div class="details-invite" data-i18n="details_invite"></div>
+
+      <div class="cards details-cards">
+        <article class="card">
+          <div class="card-title" data-i18n="ceremony_title">Τελετή</div>
+          <div class="card-meta" data-i18n="ceremony_time">Σάββατο 26 Σεπτεμβρίου 2026 · 17:30</div>
+          <div class="card-body" data-i18n="ceremony_place">Παλαιός Ιερός Ναός Αγίου Χριστοφόρου Αγρινίου</div>
+          <div class="card-actions">
+            <a class="btn small" target="_blank" rel="noopener noreferrer"
+               href="https://www.google.com/maps/place/Ekklisia+Agios+Christoforos/@38.6312909,21.4230005,18z/data=!3m1!4b1!4m6!3m5!1s0x135e8a635953c1e9:0x82834538c18a47bd!8m2!3d38.6312909!4d21.424288!16s%2Fg%2F126208ysr"
+               data-i18n="view_map">Χάρτης &amp; διαδρομή</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-title" data-i18n="reception_title">Χώρος Δεξίωσης</div>
+          <div class="card-meta" data-i18n="reception_time"></div>
+          <div class="card-body" data-i18n="reception_place">Κτήμα Πιθάρι – Lake Living, Λίμνη Τριχωνίδα</div>
+          <div class="card-actions">
+            <a class="btn small" target="_blank" rel="noopener noreferrer"
+               href="https://maps.app.goo.gl/JpzihUpEEZnmbqSX8"
+               data-i18n="view_map">Χάρτης &amp; διαδρομή</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="countdown" class="section">
+      <div class="section-eyebrow" data-i18n="countdown_eyebrow">Αντίστροφη μέτρηση</div>
+      <h2 class="section-title" data-i18n="countdown_title">Μέχρι την ημέρα του γάμου μας</h2>
+      <div class="countdown" aria-live="polite">
+        <div class="timebox"><div class="num" id="cd_days">—</div><div class="label" data-i18n="cd_days">Ημέρες</div></div>
+        <div class="timebox"><div class="num" id="cd_hours">—</div><div class="label" data-i18n="cd_hours">Ώρες</div></div>
+        <div class="timebox"><div class="num" id="cd_minutes">—</div><div class="label" data-i18n="cd_minutes">Λεπτά</div></div>
+        <div class="timebox"><div class="num" id="cd_seconds">—</div><div class="label" data-i18n="cd_seconds">Δευτ.</div></div>
+      </div>
+      <div class="countdown-sub" id="countdownStatus" data-i18n="countdown_sub"> </div>
+    </section>
+
+    <section id="location" class="section">
+      <h2 class="section-title" data-i18n="location_title">Πώς θα έρθετε</h2>
+      <div class="section-subtitle" data-i18n="location_sub">Η εκκλησία της τελετής και ο χώρος της δεξίωσης στον χάρτη</div>
+      <div class="location-travel" data-i18n="location_travel"></div>
+      <div class="maps-grid">
+        <div class="map-card">
+          <div class="map-title" data-i18n="ceremony_title">Τελετή</div>
+          <div class="map-frame">
+            <iframe
+              title="Ceremony map"
+              class="map-frame__iframe"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=38.6312909%2C21.424288&amp;z=18&amp;output=embed"></iframe>
+          </div>
+        </div>
+        <div class="map-card">
+          <div class="map-title" data-i18n="reception_title">Χώρος Δεξίωσης</div>
+          <div class="map-frame">
+            <iframe
+              title="Wedding venue map"
+              class="map-frame__iframe"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Κτήμα+Πιθάρι+Lake+Living+Τριχωνίδα&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hotels" class="section">
+  <h2 class="section-title" data-i18n="hotels_title">Διαμονή στο Αγρίνιο</h2>
+  <div class="section-subtitle" data-i18n="hotels_sub">Δύο αγαπημένες προτάσεις στο Αγρίνιο</div>
+
+  <div class="cards">
+
+    <!-- Hotel 1 -->
+    <article class="card hotel-card">
+      <div class="card-title">
+        <a class="hotel-title-link" href="https://www.guestreservations.com/agrinio-imperial-hotel/booking" target="_blank" rel="noopener noreferrer">
+          <span class="hotel-title-link__text">Agrinio Imperial Hotel</span>
+          <span class="hotel-title-link__hint" data-i18n="hotel_site_hint">Ιστότοπος &amp; κράτηση ↗</span>
+        </a>
+      </div>
+      <div class="card-body" data-i18n="hotel_imperial_body">Ξενοδοχείο κοντά στο κέντρο, με άνετο parking.</div>
+
+      <div class="card-actions">
+        <a class="btn small" target="_blank" rel="noopener noreferrer"
+           href="https://maps.google.com/?q=Agrinio%20Imperial%20Hotel%20Agrinio"
+           data-i18n="hotel_map_short">📍 Χάρτης</a>
+      </div>
+
+      <div class="map-frame map-frame--hotel">
+        <iframe
+          class="map-frame__iframe"
+          title="Agrinio Imperial Hotel map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Agrinio%20Imperial%20Hotel%20Agrinio&amp;output=embed"></iframe>
+      </div>
+
+      <div class="hotel-phones">
+        <span class="hotel-phones__label" data-i18n="hotel_phone_label">Τηλέφωνο</span>
+        <a class="hotel-phones__num" href="tel:+302641030024">+30&nbsp;26410&nbsp;30024</a>
+      </div>
+    </article>
+
+    <!-- Hotel 2 -->
+    <article class="card hotel-card">
+      <div class="card-title">
+        <a class="hotel-title-link" href="https://acrosshotels.gr/letohotel/en/" target="_blank" rel="noopener noreferrer">
+          <span class="hotel-title-link__text">Leto Boutique Hotel</span>
+          <span class="hotel-title-link__hint" data-i18n="hotel_site_hint">Ιστότοπος &amp; κράτηση ↗</span>
+        </a>
+      </div>
+      <div class="card-body" data-i18n="hotel_leto_body">Μοντέρνο boutique ξενοδοχείο στην καρδιά του Αγρινίου.</div>
+
+      <div class="card-actions">
+        <a class="btn small" target="_blank" rel="noopener noreferrer"
+           href="https://maps.google.com/?q=Leto+Boutique+Hotel+Agrinio"
+           data-i18n="hotel_map_short">📍 Χάρτης</a>
+      </div>
+
+      <div class="map-frame map-frame--hotel">
+        <iframe
+          class="map-frame__iframe"
+          title="Leto Boutique Hotel map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Leto+Boutique+Hotel+Agrinio&amp;output=embed"></iframe>
+      </div>
+
+      <div class="hotel-phones">
+        <span class="hotel-phones__label" data-i18n="hotel_phone_label">Τηλέφωνο</span>
+        <a class="hotel-phones__num" href="tel:+302641023043">+30&nbsp;26410&nbsp;23043</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+    <section id="travel" class="section travel-guide">
+      <h2 class="section-title" data-i18n="travel_title">Προορισμοί κοντά στην Αθήνα και το Αγρίνιο</h2>
+      <p class="travel-guide__intro" data-i18n="travel_intro">
+        Εάν σκοπεύετε να μείνετε περισσότερες ημέρες στην Ελλάδα, σας έχουμε ετοιμάσει μερικές από τις αγαπημένες μας προτάσεις.
+      </p>
+      <div class="travel-guide__action">
+        <a
+          class="btn travel-guide__btn"
+          id="travelGuideDownload"
+          href="assets/guides/greece-travel-guide-el.pdf"
+          data-i18n-href="travel_pdf_href"
+          data-i18n-download="travel_pdf_filename"
+          download="greece-travel-guide-el.pdf"
+          type="application/pdf"
+        >
+          <span data-i18n="travel_download_btn">Λήψη οδηγού (PDF)</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="rsvp" class="section">
+      <h2 class="section-title" data-i18n="rsvp_title">Δήλωση Παρουσίας</h2>
+      <div class="section-subtitle" data-i18n="rsvp_sub">Παρακαλώ, ενημερώστε μας για την παρουσία σας μέχρι τις 25 Αυγούστου 2026.</div>
+
+      <form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="rsvp">
+
+        <div class="form-stack">
+          <label class="f">
+            <span data-i18n="form_name">Ονοματεπώνυμο *</span>
+            <input type="text" name="name" required autocomplete="name" placeholder="">
+          </label>
+
+          <label class="f">
+            <span data-i18n="form_email_opt">Email (προαιρετικό)</span>
+            <input type="email" name="email" autocomplete="email" placeholder="">
+          </label>
+
+          <fieldset class="f attend-fieldset">
+            <legend data-i18n="form_attend">Θα παρευρεθείτε; *</legend>
+            <div class="attend-options">
+              <label class="attend-option">
+                <input type="radio" name="attending" value="yes" checked>
+                <span class="attend-option__box">
+                  <span class="attend-option__text" data-i18n="attend_yes">Θα παρευρεθώ</span>
+                </span>
+              </label>
+              <label class="attend-option">
+                <input type="radio" name="attending" value="no">
+                <span class="attend-option__box">
+                  <span class="attend-option__text" data-i18n="attend_no">Δυστυχώς, δεν θα παρευρεθώ</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="stepper-row">
+            <div class="stepper-label" data-i18n="form_adults_inc">Ενήλικες (μαζί με εσάς)</div>
+            <div class="stepper" data-stepper="adults">
+              <button type="button" class="step" data-step="-1" aria-label="minus">−</button>
+              <input type="number" name="adults" min="1" value="1" inputmode="numeric" required>
+              <button type="button" class="step" data-step="1" aria-label="plus">+</button>
+            </div>
+          </div>
+
+          <div class="stepper-row">
+            <div class="stepper-label" data-i18n="form_children">Παιδιά</div>
+            <div class="stepper" data-stepper="children">
+              <button type="button" class="step" data-step="-1" aria-label="minus">−</button>
+              <input type="number" name="children" min="0" value="0" inputmode="numeric" required>
+              <button type="button" class="step" data-step="1" aria-label="plus">+</button>
+            </div>
+          </div>
+
+          <label class="f">
+            <span data-i18n="form_allergies">Αλλεργίες ή δυσανεξίες</span>
+            <input type="text" name="allergies" placeholder="">
+          </label>
+
+          <label class="f">
+            <span data-i18n="form_message">Μήνυμα προς το ζευγάρι (προαιρετικό)</span>
+            <textarea name="message" rows="4" placeholder=""></textarea>
+          </label>
+          <button class="submit" type="submit">
+            <span data-i18n="form_submit">Αποστολή</span>
+          </button>
+        
+
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-names" data-i18n="names">Γιώργος & Εύη</div>
+      <div class="footer-date" data-i18n="hero_date_short">26.09.26</div>
+    </footer>
+  </main>
+
+  <button type="button" class="scroll-top-btn" id="scrollTopBtn" data-i18n-aria="scroll_top_aria" aria-label="Επιστροφή στην αρχή">
+    <svg class="scroll-top-btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <audio id="inviteMusic" loop preload="none">
+    <source src="assets/a-thousand-years.m4a" type="audio/mp4">
+    <source src="assets/a-thousand-years.mp3" type="audio/mpeg">
+  </audio>
+
+  <button type="button" class="music-toggle" id="musicToggle" hidden aria-pressed="true" aria-label="Σίγαση μουσικής">
+    <svg class="music-toggle__icon music-toggle__icon--on" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18V6l10-2v12"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="16" cy="16" r="3"/>
+    </svg>
+    <svg class="music-toggle__icon music-toggle__icon--off" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18V6l10-2v6"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="16" cy="16" r="3"/>
+      <line x1="3" y1="3" x2="21" y2="21"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

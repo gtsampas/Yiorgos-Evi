@@ -1,0 +1,11 @@
+# Μεγάλη cache διάρκεια για στατικά assets ώστε να μην ξανακατεβαίνουν.
+# Αν αλλάξεις το αρχείο, άλλαξε και το όνομά του (π.χ. -v2) για να σπάσει η cache.
+
+/assets/a-thousand-years.m4a
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/a-thousand-years.mp3
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=2592000

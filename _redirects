@@ -1,0 +1,10 @@
+# Clean language URLs (keeps the address bar tidy: giorgosevi.com/en)
+# 200 = rewrite (serves index.html without changing the visible URL)
+/en      /index.html   200
+/en/     /index.html   200
+/sq      /index.html   200
+/sq/     /index.html   200
+/gr      /index.html   200
+/gr/     /index.html   200
+/el      /index.html   200
+/el/     /index.html   200

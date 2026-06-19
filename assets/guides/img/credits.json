@@ -1,0 +1,51 @@
+{
+  "athens": {
+    "file": "athens.jpg",
+    "title": "File:Attica 06-13 Athens 50 View from Philopappos - Acropolis Hill.jpg",
+    "artist": "A.Savin",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg"
+  },
+  "delphi": {
+    "file": "delphi.jpg",
+    "title": "File:Tholos of Delphi 03.jpg",
+    "artist": "Bernard Gagnon",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tholos_of_Delphi_03.jpg"
+  },
+  "nafplio": {
+    "file": "nafplio.jpg",
+    "title": "File:Fortress of Palamidi - Nafplio.jpg",
+    "artist": "Camcool11",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fortress_of_Palamidi_-_Nafplio.jpg"
+  },
+  "hydra": {
+    "file": "hydra.jpg",
+    "title": "File:Hydra town 01.jpg",
+    "artist": "Herbert Ortner, Vienna, Austria",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hydra_town_01.jpg"
+  },
+  "lefkada": {
+    "file": "lefkada.jpg",
+    "title": "File:Porto Katsiki Beach, Lefkada, Ionian Islands, Greece.jpg",
+    "artist": "Dimitra Papadimitriou",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Porto_Katsiki_Beach,_Lefkada,_Ionian_Islands,_Greece.jpg"
+  },
+  "corfu": {
+    "file": "corfu.jpg",
+    "title": "File:Liston (Corfu).jpg",
+    "artist": "Radosław Botev",
+    "license": "CC BY 3.0 pl",
+    "source": "https://commons.wikimedia.org/wiki/File:Liston_(Corfu).jpg"
+  },
+  "kefalonia": {
+    "file": "kefalonia.jpg",
+    "title": "File:Myrtos Beach, Kefalonia, Greece - 20031008.jpg",
+    "artist": "Dan Taylor from London, UK",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Myrtos_Beach,_Kefalonia,_Greece_-_20031008.jpg"
+  }
+}
