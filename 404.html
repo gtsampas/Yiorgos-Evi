@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Γιώργος &amp; Εύη</title>
+  <script>
+    (function () {
+      var seg = location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+      var map = { en: "en", sq: "sq", gr: "el", el: "el" };
+      var lang = map[seg];
+      location.replace(lang ? "/?lang=" + lang : "/");
+    })();
+  </script>
+</head>
+<body></body>
+</html>
