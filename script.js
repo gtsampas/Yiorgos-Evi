@@ -11,6 +11,9 @@ const GUEST_ALIASES = {
   // "giannis-eleni": "Γιάννη και Ελένη",
 };
 
+// RSVP → Web3Forms (https://web3forms.com, email: tsampasga@gmail.com)
+const WEB3FORMS_ACCESS_KEY = "e9cdd22b-2e76-4b17-a473-af6a742c5376";
+
 const translations = {
   el: {
     names: "Γιώργος & Εύη",
@@ -764,8 +767,36 @@ if (rsvpForm) {
     syncRsvpPartyFields();
   });
 
-  rsvpForm.addEventListener("submit", (e) => {
+  rsvpForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
     syncRsvpPartyFields();
+
+    const lang = (document.documentElement.lang || "el").slice(0, 2);
+    const safeLang = ["el", "en", "sq"].includes(lang) ? lang : "el";
+    const rsvpErrors = {
+      el: {
+        config: "Η φόρμα RSVP δεν έχει ρυθμιστεί ακόμα. Επικοινωνήστε μαζί μας.",
+        failed: "Δεν στάλθηκε η απάντηση. Δοκιμάστε ξανά σε λίγο.",
+        sending: "Αποστολή…"
+      },
+      en: {
+        config: "The RSVP form is not configured yet. Please contact us.",
+        failed: "Your response could not be sent. Please try again shortly.",
+        sending: "Sending…"
+      },
+      sq: {
+        config: "Formulari RSVP nuk është konfiguruar ende. Na kontaktoni.",
+        failed: "Përgjigja nuk u dërgua. Provoni përsëri pas pak.",
+        sending: "Duke dërguar…"
+      }
+    };
+    const err = rsvpErrors[safeLang] || rsvpErrors.el;
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      window.alert(err.config);
+      return;
+    }
+
     const attending = String(new FormData(rsvpForm).get("attending") || "");
     const rsvp = attending === "no" ? "no" : "yes";
     if (rsvp === "yes") {
@@ -774,16 +805,45 @@ if (rsvpForm) {
       const ad = Number(adults?.value);
       const ch = Number(children?.value);
       if (!adults || !children || !Number.isFinite(ad) || ad < 1 || !Number.isFinite(ch) || ch < 0) {
-        e.preventDefault();
         rsvpForm.reportValidity();
         return;
       }
     }
-    const lang = (document.documentElement.lang || "el").slice(0, 2);
-    const safeLang = ["el", "en", "sq"].includes(lang) ? lang : "el";
+    if (!rsvpForm.reportValidity()) return;
+
     const guest = getGuestNames();
     const guestQuery = guest ? `&to=${encodeURIComponent(guest)}` : "";
-    rsvpForm.action = `thank-you.html?rsvp=${encodeURIComponent(rsvp)}&lang=${encodeURIComponent(safeLang)}${guestQuery}`;
+    const thankYouUrl = `thank-you.html?rsvp=${encodeURIComponent(rsvp)}&lang=${encodeURIComponent(safeLang)}${guestQuery}`;
+
+    const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn?.querySelector("span");
+    const prevLabel = submitLabel?.textContent || "";
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = err.sending;
+
+    const formData = new FormData(rsvpForm);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append(
+      "subject",
+      `RSVP (${rsvp === "yes" ? "Yes" : "No"}) · Giorgos & Evi`
+    );
+    if (guest) formData.set("guest_invite", guest);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "submit failed");
+      }
+      window.location.href = thankYouUrl;
+    } catch {
+      window.alert(err.failed);
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = prevLabel;
+    }
   });
 
   syncRsvpPartyFields();
