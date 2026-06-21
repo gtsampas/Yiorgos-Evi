@@ -252,15 +252,28 @@ a{ color:inherit; }
 .music-toggle.is-muted .music-toggle__icon--on{ display: none; }
 .music-toggle.is-muted .music-toggle__icon--off{ display: block; }
 
-/* Πάνω δεξιά: επιλογή γλώσσας — EL | EN | SQ (πάντα ορατό, πάνω από cover) */
+/* Πάνω δεξιά: επιλογή γλώσσας — EL | EN | SQ (μετά το άνοιγμα της πρόσκλησης) */
 .lang-segment-wrap{
   position: fixed;
   top: max(14px, env(safe-area-inset-top, 0px));
   right: max(14px, env(safe-area-inset-right, 0px));
-  z-index: 2601;
+  z-index: 2000;
+  transform: translateZ(0) translateY(-8px);
+  -webkit-transform: translateZ(0) translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.28s ease,
+    visibility 0.28s ease,
+    transform 0.28s ease;
+}
+.lang-segment-wrap.is-visible{
+  opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  transform: translateZ(0) translateY(0);
+  -webkit-transform: translateZ(0) translateY(0);
 }
 
 .lang-segment{
@@ -282,7 +295,7 @@ a{ color:inherit; }
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(78, 58, 28, 0.62);
+  color: rgba(153, 125, 69, 0.55);
   font-family: var(--serif);
   font-size: 13px;
   font-weight: 600;
@@ -300,9 +313,9 @@ a{ color:inherit; }
 }
 
 .lang-segment__btn.is-active{
-  background: #3d4a3a;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(45, 55, 42, 0.22);
+  background: var(--gold);
+  color: #fffdf9;
+  box-shadow: 0 2px 10px rgba(153, 125, 69, 0.35);
 }
 
 .lang-segment__btn:focus-visible{

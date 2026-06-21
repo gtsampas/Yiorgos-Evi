@@ -404,17 +404,28 @@ function setLang(lang) {
 const candleOpen = document.getElementById("candleOpen");
 const cover = document.getElementById("cover");
 const onepage = document.getElementById("onepage");
+const langSegmentWrap = document.getElementById("langSegmentWrap");
 const langSegment = document.getElementById("langSegment");
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 const LEAVE_MS = 780;
 const SCROLL_TOP_THRESHOLD = 320;
+const LANG_SEGMENT_SCROLL_THRESHOLD = 48;
 
 function updateScrollTopVisibility() {
   if (!scrollTopBtn || !cover) return;
   const siteOpen = window.getComputedStyle(cover).display === "none";
   const y = window.scrollY || document.documentElement.scrollTop || 0;
   scrollTopBtn.classList.toggle("is-visible", siteOpen && y > SCROLL_TOP_THRESHOLD);
+}
+
+function updateLangSegmentVisibility() {
+  if (!langSegmentWrap || !cover) return;
+  if (langSegmentWrap.hidden) return;
+  const siteOpen = window.getComputedStyle(cover).display === "none";
+  if (!siteOpen) return;
+  const y = window.scrollY || document.documentElement.scrollTop || 0;
+  langSegmentWrap.classList.toggle("is-visible", y <= LANG_SEGMENT_SCROLL_THRESHOLD);
 }
 
 function showOnePage() {
@@ -441,8 +452,10 @@ function leaveCoverAndShowSite() {
       cover.classList.remove("cover-leaving", "cover--opening");
     }
     showOnePage();
+    if (langSegmentWrap) langSegmentWrap.hidden = false;
     startMusic();
     updateScrollTopVisibility();
+    updateLangSegmentVisibility();
     requestAnimationFrame(() => {
       scheduleNavScrollSpy();
       requestAnimationFrame(() => scheduleNavScrollSpy());
@@ -511,12 +524,14 @@ function positionCandleHit() {
 
 function onWindowScroll() {
   updateScrollTopVisibility();
+  updateLangSegmentVisibility();
   scheduleNavScrollSpy();
 }
 function onWindowResize() {
   navSpyLastActive = "";
   scheduleNavScrollSpy();
   updateScrollTopVisibility();
+  updateLangSegmentVisibility();
   positionCandleHit();
 }
 window.addEventListener("scroll", onWindowScroll, { passive: true });
