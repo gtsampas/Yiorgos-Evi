@@ -281,12 +281,6 @@ const translations = {
 
 const SUPPORTED_LANGS = ["el", "en", "sq"];
 
-const LANG_DROPDOWN_DISPLAY = {
-  el: { label: "Ελληνικά", flag: "🇬🇷" },
-  en: { label: "English", flag: "🇬🇧" },
-  sq: { label: "Shqip", flag: "🇦🇱" }
-};
-
 function getLangFromPath() {
   // Clean URLs: giorgosevi.com/en, /sq, /gr (see _redirects). "gr" maps to Greek.
   const seg = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
@@ -398,7 +392,7 @@ function setLang(lang) {
   const sealText = document.querySelector(".seal-text");
   if (sealText) sealText.textContent = "G&E";
 
-  syncLangDropdownUi(safeLang);
+  syncLangSegmentUi(safeLang);
   applyPersonalizedGreeting(dict);
 
   if (typeof musicToggle !== "undefined" && musicToggle && !musicToggle.hidden) {
@@ -410,12 +404,8 @@ function setLang(lang) {
 const candleOpen = document.getElementById("candleOpen");
 const cover = document.getElementById("cover");
 const onepage = document.getElementById("onepage");
-const langDropdownWrap = document.getElementById("langDropdownWrap");
-const langDropdown = document.getElementById("langDropdown");
-const langDropdownBtn = document.getElementById("langDropdownBtn");
-const langDropdownPanel = document.getElementById("langDropdownPanel");
-const langDropdownLabel = document.getElementById("langDropdownLabel");
-const langDropdownFlag = document.getElementById("langDropdownFlag");
+const langSegmentWrap = document.getElementById("langSegmentWrap");
+const langSegment = document.getElementById("langSegment");
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 const LEAVE_MS = 780;
@@ -452,7 +442,7 @@ function leaveCoverAndShowSite() {
       cover.classList.remove("cover-leaving", "cover--opening");
     }
     showOnePage();
-    if (langDropdownWrap) langDropdownWrap.hidden = false;
+    if (langSegmentWrap) langSegmentWrap.hidden = false;
     startMusic();
     updateScrollTopVisibility();
     requestAnimationFrame(() => {
@@ -646,58 +636,28 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 
-function syncLangDropdownUi(lang) {
-  if (!langDropdownBtn || !langDropdownLabel || !langDropdownFlag) return;
+function syncLangSegmentUi(lang) {
+  if (!langSegment) return;
   const safe = SUPPORTED_LANGS.includes(lang) ? lang : "el";
   const dict = translations[safe] || translations.el;
-  const display = LANG_DROPDOWN_DISPLAY[safe] || LANG_DROPDOWN_DISPLAY.el;
-  langDropdownBtn.setAttribute("aria-label", dict.lang_menu);
-  langDropdownLabel.textContent = display.label;
-  langDropdownFlag.textContent = display.flag;
-  document.querySelectorAll(".lang-dropdown__option").forEach((opt) => {
-    const optLang = opt.getAttribute("data-lang");
-    opt.setAttribute("aria-selected", optLang === safe ? "true" : "false");
+  langSegment.setAttribute("aria-label", dict.lang_menu);
+  langSegment.querySelectorAll(".lang-segment__btn").forEach((btn) => {
+    const btnLang = btn.getAttribute("data-lang");
+    const active = btnLang === safe;
+    btn.classList.toggle("is-active", active);
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
   });
 }
 
-function closeLangDropdown() {
-  if (!langDropdownBtn || !langDropdownPanel) return;
-  langDropdownBtn.setAttribute("aria-expanded", "false");
-  langDropdownPanel.hidden = true;
-  langDropdown?.classList.remove("is-open");
-}
-
-function toggleLangDropdown() {
-  if (!langDropdownBtn || !langDropdownPanel) return;
-  const open = langDropdownBtn.getAttribute("aria-expanded") === "true";
-  if (open) {
-    closeLangDropdown();
-  } else {
-    langDropdownBtn.setAttribute("aria-expanded", "true");
-    langDropdownPanel.hidden = false;
-    langDropdown?.classList.add("is-open");
-  }
-}
-
-if (langDropdownBtn && langDropdownPanel) {
-  langDropdownBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    toggleLangDropdown();
-  });
-  langDropdownPanel.querySelectorAll(".lang-dropdown__option").forEach((opt) => {
-    opt.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const lang = opt.getAttribute("data-lang");
+if (langSegment) {
+  langSegment.querySelectorAll(".lang-segment__btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang");
       if (lang && SUPPORTED_LANGS.includes(lang)) {
         setLang(lang);
         updateCountdown();
       }
-      closeLangDropdown();
     });
-  });
-  document.addEventListener("click", () => closeLangDropdown());
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeLangDropdown();
   });
 }
 

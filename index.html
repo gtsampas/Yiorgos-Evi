@@ -38,37 +38,11 @@
     <span class="floral-extra floral-extra--mid-right"></span>
   </div>
 
-  <div class="lang-dropdown-wrap" id="langDropdownWrap" hidden>
-    <div class="lang-dropdown" id="langDropdown">
-      <button type="button" class="lang-dropdown__btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="listbox"
-              aria-controls="langDropdownPanel" aria-label="Επιλογή γλώσσας">
-        <span class="lang-dropdown__flag" id="langDropdownFlag" aria-hidden="true">🇬🇷</span>
-        <span class="lang-dropdown__label" id="langDropdownLabel">Ελληνικά</span>
-        <span class="lang-dropdown__chev" aria-hidden="true">▾</span>
-      </button>
-      <ul class="lang-dropdown__panel" id="langDropdownPanel" role="listbox" hidden>
-        <li class="lang-dropdown__item" role="none">
-          <button type="button" class="lang-dropdown__option" role="option" data-lang="el">
-            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
-            <span class="lang-dropdown__fi" aria-hidden="true">🇬🇷</span>
-            <span>Ελληνικά</span>
-          </button>
-        </li>
-        <li class="lang-dropdown__item" role="none">
-          <button type="button" class="lang-dropdown__option" role="option" data-lang="en">
-            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
-            <span class="lang-dropdown__fi" aria-hidden="true">🇬🇧</span>
-            <span>English</span>
-          </button>
-        </li>
-        <li class="lang-dropdown__item" role="none">
-          <button type="button" class="lang-dropdown__option" role="option" data-lang="sq">
-            <span class="lang-dropdown__check" aria-hidden="true">✓</span>
-            <span class="lang-dropdown__fi" aria-hidden="true">🇦🇱</span>
-            <span>Shqip</span>
-          </button>
-        </li>
-      </ul>
+  <div class="lang-segment-wrap" id="langSegmentWrap" hidden>
+    <div class="lang-segment" id="langSegment" role="group" aria-label="Επιλογή γλώσσας">
+      <button type="button" class="lang-segment__btn is-active" data-lang="el" aria-pressed="true">EL</button>
+      <button type="button" class="lang-segment__btn" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" class="lang-segment__btn" data-lang="sq" aria-pressed="false">SQ</button>
     </div>
   </div>
 
