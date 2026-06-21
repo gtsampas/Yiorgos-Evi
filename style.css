@@ -252,16 +252,15 @@ a{ color:inherit; }
 .music-toggle.is-muted .music-toggle__icon--on{ display: none; }
 .music-toggle.is-muted .music-toggle__icon--off{ display: block; }
 
-/* Πάνω δεξιά: επιλογή γλώσσας — EL | EN | SQ */
+/* Πάνω δεξιά: επιλογή γλώσσας — EL | EN | SQ (πάντα ορατό, πάνω από cover) */
 .lang-segment-wrap{
   position: fixed;
   top: max(14px, env(safe-area-inset-top, 0px));
   right: max(14px, env(safe-area-inset-right, 0px));
-  z-index: 2000;
-  pointer-events: none;
-}
-.lang-segment-wrap:not([hidden]){
+  z-index: 2601;
   pointer-events: auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .lang-segment{
@@ -270,18 +269,20 @@ a{ color:inherit; }
   gap: 2px;
   padding: 3px;
   border-radius: 999px;
-  border: 1px solid rgba(153, 125, 69, 0.35);
+  border: 1px solid rgba(153, 125, 69, 0.45);
   background: rgba(255, 253, 248, 0.98);
-  box-shadow: 0 4px 16px rgba(100, 75, 35, 0.1);
+  box-shadow: 0 4px 18px rgba(100, 75, 35, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .lang-segment__btn{
-  min-width: 2.65rem;
-  padding: 7px 10px;
+  min-width: 2.75rem;
+  padding: 8px 11px;
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(90, 72, 40, 0.55);
+  color: rgba(78, 58, 28, 0.62);
   font-family: var(--serif);
   font-size: 13px;
   font-weight: 600;
@@ -292,9 +293,10 @@ a{ color:inherit; }
   -webkit-tap-highlight-color: transparent;
 }
 
-.lang-segment__btn:hover:not(.is-active){
+.lang-segment__btn:hover:not(.is-active),
+.lang-segment__btn:active:not(.is-active){
   color: var(--label-ink);
-  background: rgba(153, 125, 69, 0.08);
+  background: rgba(153, 125, 69, 0.1);
 }
 
 .lang-segment__btn.is-active{
@@ -306,6 +308,23 @@ a{ color:inherit; }
 .lang-segment__btn:focus-visible{
   outline: 2px solid rgba(153, 125, 69, 0.65);
   outline-offset: 2px;
+}
+
+@media (max-width: 600px){
+  .lang-segment-wrap{
+    top: max(10px, env(safe-area-inset-top, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
+  }
+  .lang-segment{
+    padding: 4px;
+    box-shadow: 0 6px 22px rgba(100, 75, 35, 0.2);
+  }
+  .lang-segment__btn{
+    min-width: 3rem;
+    min-height: 36px;
+    padding: 9px 12px;
+    font-size: 14px;
+  }
 }
 
 /* Menu (keep but very subtle) */

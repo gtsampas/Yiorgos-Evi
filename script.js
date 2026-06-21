@@ -404,7 +404,6 @@ function setLang(lang) {
 const candleOpen = document.getElementById("candleOpen");
 const cover = document.getElementById("cover");
 const onepage = document.getElementById("onepage");
-const langSegmentWrap = document.getElementById("langSegmentWrap");
 const langSegment = document.getElementById("langSegment");
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
@@ -442,7 +441,6 @@ function leaveCoverAndShowSite() {
       cover.classList.remove("cover-leaving", "cover--opening");
     }
     showOnePage();
-    if (langSegmentWrap) langSegmentWrap.hidden = false;
     startMusic();
     updateScrollTopVisibility();
     requestAnimationFrame(() => {
